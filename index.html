@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WARNING VIRUS</title>
+  <style>
+    body {
+      background-color: black;
+      color: red;
+      font-family: "Comic Sans MS", "Impact", sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 80px;
+      margin-top: 100px;
+      text-shadow: 5px 5px 0px darkred;
+      animation: shake 0.1s infinite;
+    }
+
+    .blink {
+      font-size: 50px;
+      margin-top: 40px;
+      animation: blink 0.5s infinite;
+    }
+
+    .box {
+      border: 10px dashed red;
+      margin: 50px;
+      padding: 30px;
+      background-color: #110000;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes shake {
+      0% { transform: translate(0px, 0px); }
+      25% { transform: translate(5px, -5px); }
+      50% { transform: translate(-5px, 5px); }
+      75% { transform: translate(5px, 5px); }
+      100% { transform: translate(-5px, -5px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h1>⚠ WARNING ⚠<br>VIRUS DETECTED</h1>
+    <div class="blink">YOUR COMPUTER IS INFECTED</div>
+    <div class="blink">CALL MICROSOFT SUPPORT NOW</div>
+    <div class="blink">DO NOT CLOSE THIS PAGE</div>
+  </div>
+
+  <audio id="alarm" autoplay loop>
+    <source src="Danger Alarm Sound Effect.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // force the audio to keep playing even if browser blocks autoplay
+    const alarm = document.getElementById("alarm");
+
+    function tryPlay() {
+      alarm.play().catch(() => {
+        // try again every second until it works
+        setTimeout(tryPlay, 1000);
+      });
+    }
+
+    tryPlay();
+
+    // extra annoyance: random alert popups
+    setInterval(() => {
+      alert("WARNING! SYSTEM FAILURE!");
+    }, 8000);
+  </script>
+
+</body>
+</html>
